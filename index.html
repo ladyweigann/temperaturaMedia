@@ -1,27 +1,74 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="p-3 m-3">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Temperatura Média</title>
-  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
-<body>
-    <div>
-        <h1>Temperatura Média</h1>
 
-        <label for="idTemperatura">Insira a temperatura</label>
-        <br>
-        <input type="number" name="nmTemperatura" id="idTemperatura">
-        <br>
-        <button type="button">Verificar</button>
+<body class="bg-secondary">
+    <div class="row">
+        <div class="col">
 
+            <h2>Temperatura Média</h2>
+
+            <label class="form-label" for="idTemperatura">Insira a temperatura</label>
+            <br>
+            <input class="form-control w-50" type="number" name="nmTemperatura" id="idTemperatura">
+            <br>
+            <button class="btn btn-light border-dark" type="button" onclick="entradaDeDados()">Verificar</button>
+        </div>
+
+        <p id="retorno"></p>
+
+        <br><br>
+        <div class="col">
+            <p id="idP"></p>
+        </div>
     </div>
-    <div>
 
-    </div>
+    <script>
 
-    
+        var temperaturas = [27, 29, 31, 35, 27, 29, 26, 31, 32, 28, 27, 29, 31, 35, 27, 29, 26, 31, 32, 28, 27, 29, 31, 35, 27, 29, 26, 31, 32, 28]
+
+        var soma = 0
+
+        for (let i = 0; i < temperaturas.length; i++) {
+            soma += temperaturas[i]
+        }
+
+        var media = soma / 30
+        var entradaTemperatura
+        var telaResposta = document.querySelector("#idP")
+
+        function entradaDeDados() {
+            entradaTemperatura = document.querySelector("#idTemperatura").value
+            console.log(entradaTemperatura)
+            var resultado
+            if (entradaTemperatura <= media) {
+                resultado = "Dentro da média"
+            } else {
+                resultado = "Acima da média"
+            }
+
+            telaResposta.innerHTML = resultado
+
+        }
+
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+        integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+        integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+        crossorigin="anonymous"></script>
+
 </body>
+
 </html>
